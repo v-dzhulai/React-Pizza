@@ -1,14 +1,14 @@
 import React from 'react';
 
-const PizzaBlock = () => {
+const PizzaBlock = ({imageUrl, title, price}) => {
     return (
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="./img/1.webp"
+                src={imageUrl}
                 alt="Pizza"
             />
-            <h4 className="pizza-block__title">Чізбурґер-піца</h4>
+            <h4 className="pizza-block__title">{title}</h4>
 
             <div className="pizza-block__selector">
                 <ul>
@@ -22,7 +22,7 @@ const PizzaBlock = () => {
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">від 395 ₴</div>
+                <div className="pizza-block__price">від {price} ₴</div>
                 <div className="button button--outline button--add">
                     <svg
                         width="12"

@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Categories from "./components/Categories";
 import Sort from "./components/Sort";
 import PizzaBlock from "./components/PizzaBlock";
+import pizzas from "./state";
 
 function App() {
     return (
@@ -20,16 +21,9 @@ function App() {
 
                         <h2 className="content__title">Всі піци</h2>
                         <div className="content__items">
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
-                            <PizzaBlock/>
+                            {pizzas.map(item => {
+                                return <PizzaBlock key={`${item.id}_${item.title}`} {...item}/>
+                            })}
                         </div>
                     </div>
                 </div>

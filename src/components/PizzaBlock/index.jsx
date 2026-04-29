@@ -1,6 +1,9 @@
 import React from 'react';
 
-const PizzaBlock = ({imageUrl, title, price}) => {
+import PizzaTypes from "./PizzaTypes";
+import PizzaSizes from "./PizzaSizes";
+
+const PizzaBlock = ({imageUrl, title, price, types, sizes}) => {
     const [pizzaCount, setPizzaCount] = React.useState(0);
 
     const onClickPizzaCount = () => {
@@ -14,19 +17,14 @@ const PizzaBlock = ({imageUrl, title, price}) => {
                 src={imageUrl}
                 alt="Pizza"
             />
+
             <h4 className="pizza-block__title">{title}</h4>
 
             <div className="pizza-block__selector">
-                <ul>
-                    <li className="active">тонке</li>
-                    <li>традиційне</li>
-                </ul>
-                <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                </ul>
+                <PizzaTypes types={types}/>
+                <PizzaSizes sizes={sizes}/>
             </div>
+
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">від {price} ₴</div>
                 <button className="button button--outline button--add" onClick={onClickPizzaCount}>
@@ -42,6 +40,7 @@ const PizzaBlock = ({imageUrl, title, price}) => {
                             fill="white"
                         />
                     </svg>
+
                     <span>Додати</span>
                     <i>{pizzaCount}</i>
                 </button>

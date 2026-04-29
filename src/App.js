@@ -1,14 +1,16 @@
+import React from "react";
 import './scss/app.scss';
 
 import Header from "./components/Header";
 import Categories from "./components/Categories";
 import Sort from "./components/Sort";
 import PizzaBlock from "./components/PizzaBlock";
-import React from "react";
+import Skeleton from "./components/PizzaBlock/Skeleton";
 
 function App() {
     const [activeCategory, setActiveCategory] = React.useState(0);
     const [pizzas, setPizzas] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
     const categories = ['Всі', 'М\'ясні', 'Веґетаріанські', 'Ґриль', 'Гострі', 'Закриті'];
 
     const onChangeCategory = (i) => {
@@ -18,7 +20,10 @@ function App() {
     React.useEffect(() => {
         fetch('https://69f1f91cb15130b973524e5d.mockapi.io/items')
             .then((res) => res.json())
-            .then(pizzas => setPizzas(pizzas));
+            .then(pizzas => {
+                setPizzas(pizzas);
+                setIsLoading(false);
+            });
     }, []);
 
     return (
@@ -35,9 +40,11 @@ function App() {
 
                         <h2 className="content__title">{categories[activeCategory]} піци</h2>
                         <div className="content__items">
-                            {pizzas.map((item) => {
-                                return <PizzaBlock key={`${item.id}_${item.title}`} {...item}/>
-                            })}
+                            {
+                                isLoading
+                                    ? [...new Array(4)].map((item, i) => <Skeleton key={i}/>)
+                                    : pizzas.map(item => <PizzaBlock key={`${item.id}_${item.title}`} {...item}/>)
+                            }
                         </div>
                     </div>
                 </div>

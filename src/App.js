@@ -4,16 +4,22 @@ import Header from "./components/Header";
 import Categories from "./components/Categories";
 import Sort from "./components/Sort";
 import PizzaBlock from "./components/PizzaBlock";
-import pizzas from "./state";
 import React from "react";
 
 function App() {
     const [activeCategory, setActiveCategory] = React.useState(0);
+    const [pizzas, setPizzas] = React.useState([]);
     const categories = ['Всі', 'М\'ясні', 'Веґетаріанські', 'Ґриль', 'Гострі', 'Закриті'];
 
     const onChangeCategory = (i) => {
         setActiveCategory(i);
     };
+
+    React.useEffect(() => {
+        fetch('https://69f1f91cb15130b973524e5d.mockapi.io/items')
+            .then((res) => res.json())
+            .then(pizzas => setPizzas(pizzas));
+    }, []);
 
     return (
         <div className="App">

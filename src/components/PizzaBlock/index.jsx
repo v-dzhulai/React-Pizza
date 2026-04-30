@@ -3,7 +3,7 @@ import React from 'react';
 import PizzaTypes from "./PizzaTypes";
 import PizzaSizes from "./PizzaSizes";
 
-const PizzaBlock = ({imageUrl, title, price, types, sizes}) => {
+const PizzaBlock = ({image, title, description, price, types, sizes}) => {
     const [pizzaCount, setPizzaCount] = React.useState(0);
 
     const onClickPizzaCount = () => {
@@ -14,11 +14,13 @@ const PizzaBlock = ({imageUrl, title, price, types, sizes}) => {
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src={imageUrl}
+                src={image}
                 alt="Pizza"
             />
 
             <h4 className="pizza-block__title">{title}</h4>
+
+            <p className="pizza-block__description">{description}</p>
 
             <div className="pizza-block__selector">
                 <PizzaTypes types={types}/>

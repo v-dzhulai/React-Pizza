@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Cart = () => {
     return (
@@ -39,7 +40,7 @@ const Cart = () => {
                 <div className="content__items">
                     <div className="cart__item">
                         <div className="cart__item-img">
-                            <img className="pizza-block__image" src="./img/1.webp" alt="Pizza"/>
+                            <img className="pizza-block__image" src="./img/1.png" alt="Pizza"/>
                         </div>
                         <div className="cart__item-info">
                             <h3>Сирне курча</h3>
@@ -65,9 +66,10 @@ const Cart = () => {
                         <span> Сума замовлення: <b>900 ₴</b> </span>
                     </div>
                     <div className="cart__bottom-buttons">
-                        <a href="/" className="button button--outline button--add go-back-btn">
+                        <Link to="/" className="button button--outline button--add go-back-btn">
                             <span>Повернутися назад</span>
-                        </a>
+                        </Link>
+
                         <div className="button pay-btn">
                             <span>Оплатити зараз</span>
                         </div>

@@ -5,11 +5,13 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock";
 import Pagination from "../components/Pagination";
+import {SearchContext} from "../App";
 
-const Home = ({searchValue}) => {
+const Home = () => {
     const [pizzas, setPizzas] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [page, setPage] = React.useState(1);
+    const {searchValue} = React.useContext(SearchContext);
 
     const [categoryIndex, setCategoryIndex] = React.useState(0);
     const categories = ['Всі', 'М\'ясні', 'Веґетаріанські', 'Ґриль', 'Гострі', 'Закриті'];

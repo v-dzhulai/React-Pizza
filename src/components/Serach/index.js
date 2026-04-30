@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './Search.module.scss';
+import {SearchContext} from "../../App";
 
-const Search = ({searchValue, setSearchValue}) => {
+const Search = () => {
+    const {searchValue, setSearchValue} = React.useContext(SearchContext);
+
     return (
         <div className={styles.root}>
             <svg
@@ -23,6 +26,7 @@ const Search = ({searchValue, setSearchValue}) => {
                     strokeMiterlimit="10"
                     strokeWidth="2"
                 />
+
                 <line
                     fill="none"
                     id="XMLID_44_"
@@ -37,6 +41,7 @@ const Search = ({searchValue, setSearchValue}) => {
                     y2="20.366"
                 />
             </svg>
+
             <input
                 // ref={inputRef}
                 value={searchValue}
